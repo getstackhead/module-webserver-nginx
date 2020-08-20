@@ -1,0 +1,18 @@
+{
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/exec",
+      {"prepareCmd": "sed -i -E \"s/(version: \\\").*(\\\",)/\\1${nextRelease.version}\\2/\" galaxy.yml"}
+    ],
+    [
+      "@semantic-release/git",
+      {"assets": ["galaxy.yml"]}
+    ],
+    "@semantic-release/github"
+  ],
+  "branches": [
+    "master"
+  ]
+}
