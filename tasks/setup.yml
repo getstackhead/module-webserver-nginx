@@ -4,10 +4,11 @@
   synchronize:
     src: "{{ role_path }}/vendor/server-configs-nginx/h5bp"
     dest: /etc/nginx
+- set_fact:
+    nginx_conf_template: "{{ role_path }}/templates/nginx/nginx.conf.j2"
 - name: Setup Nginx
   vars:
     nginx_ppa_use: true
-    nginx_conf_template: "roles/stackhead_webserver_nginx/templates/nginx/nginx.conf.j2"
     nginx_vhosts: []
     __nginx_user: "stackhead"
     root_group: "stackhead"
