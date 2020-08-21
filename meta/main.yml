@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: stackhead-nginx
+  role_name: stackhead-module-webserver-nginx
   author: Mario Lubenka
   description: Nginx webserver module for StackHead
   issue_tracker_url: https://github.com/getstackhead/module-webserver-nginx/issues
