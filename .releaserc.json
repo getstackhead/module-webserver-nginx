@@ -3,7 +3,7 @@
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     ["@semantic-release/exec", {
-      "prepareCmd": "git submodule sync && git submodule update --init"
+      "prepareCmd": "git submodule sync && git submodule update --init && cp -r .submodules/server-configs-nginx/h5bp/* vendor/server-configs-nginx/h5bp"
     }],
     ["@semantic-release/git", {
       "assets": ["vendor/server-configs-nginx/h5bp"]
