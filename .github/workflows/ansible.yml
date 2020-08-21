@@ -34,3 +34,8 @@ jobs:
         uses: saitho/semantic-release-action-pnpm@master
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Import repository into Ansible Galaxy
+        uses: 0x022b/galaxy-role-import-action@v1
+        with:
+          galaxy_api_key: ${{ secrets.galaxy_api_key }}
+        if: steps.release.outputs.new_release_published
