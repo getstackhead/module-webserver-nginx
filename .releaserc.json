@@ -2,14 +2,12 @@
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    [
-      "@semantic-release/exec",
-      {"prepareCmd": "sed -i -E \"s/(version: \\\").*(\\\",)/\\1${nextRelease.version}\\2/\" galaxy.yml"}
-    ],
-    [
-      "@semantic-release/git",
-      {"assets": ["galaxy.yml"]}
-    ],
+    ["@semantic-release/exec", {
+      "prepareCmd": "git submodule sync && git submodule update --init"
+    }],
+    ["@semantic-release/git", {
+      "assets": ["vendor/server-configs-nginx/h5bp"]
+    }],
     "@semantic-release/github"
   ],
   "branches": [
