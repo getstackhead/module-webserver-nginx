@@ -1,4 +1,5 @@
 ---
+type: webserver
 terraform:
   provider:
     name: nginx
