@@ -13,4 +13,4 @@ galaxy_info:
     - nginx
 
 dependencies:
-  - role: geerlingguy.nginx
+  - role: nginxinc.nginx
