@@ -12,4 +12,4 @@
 - include_tasks: "{{ role_path }}/tasks/steps/generate-serverblock-tf.yml"
 
 # Generate SSL certificate configurations
-- include_tasks: "roles/stackhead_project/tasks/ssl/ssl-config.yml"
+- include_tasks: "{{ stackhead__roles }}/stackhead_module_api/tasks/ssl-certificate.yml"
