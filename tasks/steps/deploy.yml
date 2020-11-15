@@ -6,10 +6,10 @@
   when: item.security is defined and item.security.authentication is defined
   with_items: "{{ app_config.domains }}"
 
-- include_tasks: "{{ role_path }}/tasks/steps/generate-htpasswd-tf.yml"
+- include_tasks: "{{ role_path }}/tasks/nginx_steps/generate-htpasswd-tf.yml"
   when: auths_basic is defined and auths_basic | length > 0
 
-- include_tasks: "{{ role_path }}/tasks/steps/generate-serverblock-tf.yml"
+- include_tasks: "{{ role_path }}/tasks/nginx_steps/generate-serverblock-tf.yml"
 
 # Generate SSL certificate configurations
 - include_tasks: "{{ stackhead__roles }}/stackhead_module_api/tasks/ssl-certificate.yml"
