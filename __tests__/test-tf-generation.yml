@@ -11,9 +11,9 @@
       with_items: "{{ app_config.domains }}"
     - block:
         - name: Generate Nginx Server Block Terraform file
-          import_tasks: "{{ role_path }}/tasks/steps/generate-serverblock-tf.yml"
+          import_tasks: "{{ role_path }}/tasks/nginx_steps/generate-serverblock-tf.yml"
         - name: Generate htpasswd Terraform file
-          import_tasks: "{{ role_path }}/tasks/steps/generate-htpasswd-tf.yml"
+          import_tasks: "{{ role_path }}/tasks/nginx_steps/generate-htpasswd-tf.yml"
       vars:
         role_path: ".."
         nginx_usehttps: 1
