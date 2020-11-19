@@ -11,11 +11,11 @@
       with_items: "{{ app_config.domains }}"
     - block:
         - name: Generate Nginx Server Block Terraform file
-          import_tasks: "{{ role_path }}/tasks/nginx_steps/generate-serverblock-tf.yml"
+          import_tasks: "{{ module_role_path | default(role_path) }}/tasks/nginx_steps/generate-serverblock-tf.yml"
         - name: Generate htpasswd Terraform file
-          import_tasks: "{{ role_path }}/tasks/nginx_steps/generate-htpasswd-tf.yml"
+          import_tasks: "{{ module_role_path | default(role_path) }}/tasks/nginx_steps/generate-htpasswd-tf.yml"
       vars:
-        role_path: ".."
+        module_role_path: ".."
         nginx_usehttps: 1
         nginx_servername: "test_project"
         stackhead__acme_folder: ""
