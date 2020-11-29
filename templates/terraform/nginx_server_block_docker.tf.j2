@@ -3,7 +3,7 @@ resource "nginx_server_block" "nginx-{{ project_name }}" {
   filename = "{{ project_name }}.conf"
   enable = true
 
-{%- set all_ports = containerapp__expose|getstackhead.stackhead.containerPorts(project_name) %}
+{%- set all_ports = containerapp__expose|getstackhead.stackhead.containerPorts(project_name, container_resource_name) %}
   markers = {
     docker_ports = "{{ all_ports|map(attribute='tfstring')|join(',') }}"
   }
@@ -30,7 +30,7 @@ EOF
 {%- if nginx_expose is defined and nginx_expose.service is defined %}
   depends_on = [
 {% for nginx_expose in containerapp__expose if nginx_expose.external_port != 443 %}
-{% if not loop.first %},{% endif %}docker_container.stackhead-{{ project_name }}-{{ nginx_expose.service }}
+{% if not loop.first %},{% endif %}{{ container_resource_name }}.stackhead-{{ project_name }}-{{ nginx_expose.service }}
 {% endfor %}
   ]
 {%- endif %}
