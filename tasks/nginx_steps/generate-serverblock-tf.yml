@@ -5,4 +5,4 @@
     dest: "{{ stackhead__tf_project_folder }}/nginx_server_block.tf"
     force: true
   vars:
-    container_resource_name: "{{ lookup('vars', stackhead_config.container|getstackhead.stackhead.module_vars_name).container.terraform.resource_name }}"
+    container_resource_name: "{{ lookup('vars', stackhead_config.container|getstackhead.stackhead.module_vars_name).terraform.provider.resource_name }}"

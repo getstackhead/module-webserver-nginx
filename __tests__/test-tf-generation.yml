@@ -8,8 +8,8 @@
     - set_fact:
         containerapp__expose: "{{ containerapp__expose|default([]) + item.expose }}"
         module_vars_test:
-          container:
-            terraform:
+          terraform:
+            provider:
               resource_name: test_resource
       when: item.expose is defined and item.expose not in containerapp__expose|default([])
       with_items: "{{ app_config.domains }}"
