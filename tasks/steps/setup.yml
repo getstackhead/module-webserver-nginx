@@ -12,6 +12,7 @@
     nginx_vhosts: []
     __nginx_user: "stackhead"
     root_group: "stackhead"
+    nginx_extra_conf_options: "{{ module.config.extra_conf_options|default({}) }}"
   include_role:
     name: geerlingguy.nginx
 - name: adjust owner of /var/www directories
