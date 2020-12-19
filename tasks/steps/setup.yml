@@ -23,6 +23,7 @@
     root_group: "stackhead"
     nginx_extra_conf_options: "{{ module.config.extra_conf_options|default({}) }}"
     nginx_extra_conf_http_options: "{{ module.config.extra_conf_http_options|default({}) }}"
+    server_names_hash_bucket_size: "{{ module.config.server_names_hash_bucket_size|default(64) }}"
   include_role:
     name: geerlingguy.nginx
 - name: adjust owner of /var/www directories
