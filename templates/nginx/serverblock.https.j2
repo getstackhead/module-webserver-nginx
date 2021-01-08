@@ -13,7 +13,7 @@ http2 {% if nginx_usehttps %}ssl{% endif %}
 {%- if nginx_usehttps %}
     ssl_certificate {{ stackhead__certificates_project_folder }}/fullchain.pem;
     ssl_certificate_key {{ stackhead__certificates_project_folder }}/privkey.pem;
-    include /etc/nginx/h5bp/ssl/policy_modern.conf;
+    include /etc/nginx/h5bp/ssl/policy_intermediate.conf;
     client_max_body_size 10G;
 {%- endif %}
 {% endblock %}
