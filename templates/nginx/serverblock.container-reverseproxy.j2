@@ -5,6 +5,7 @@
         proxy_redirect off;
         proxy_set_header X-Scheme $scheme;
         proxy_set_header Host $host;
+        proxy_set_header Referer $http_referer;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         add_header Strict-Transport-Security 'max-age=15552000; includeSubDomains' always;
