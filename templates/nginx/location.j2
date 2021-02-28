@@ -1,0 +1,18 @@
+{% set locations = expose.proxy_websocket_locations|d([]) + ["/"] %}
+
+{%- set ns = namespace (path = '') %}
+{% for path in locations %}
+{%- set ns.path = path %}
+    location {{ path }} {
+    {%- block main_location %}{%- endblock %}
+
+{% block authentication %}
+{% if domainConfig.security.authentication is defined and domainConfig.security.authentication|selectattr("type", "equalto", "basic")|list | length > 0 %}
+        # Authentication
+        auth_basic           "{{ nginx_basicauth_title }}";
+        auth_basic_user_file "{{ nginx_htpasswd_path }}/.{{ domainConfig.domain }}";
+{% endif %}
+{% endblock %}
+
+    }
+{% endfor %}

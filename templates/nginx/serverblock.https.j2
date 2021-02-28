@@ -1,4 +1,5 @@
 {% set port = port|default(443) %}
+{% set location_file = location_file|d("location-reverseproxy.j2") %}
 {% extends "serverblock.j2" %}
 
 {% block listen_params %}
