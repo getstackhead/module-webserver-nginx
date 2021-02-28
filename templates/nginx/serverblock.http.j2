@@ -1,4 +1,5 @@
 {% set port = port|default(80) %}
+{% set location_file = location_file|d("location-https-redirect.j2") %}
 {% extends "serverblock.j2" %}
 
 {% block location %}
@@ -9,8 +10,4 @@
             default_type text/plain;
         }
     }
-{% endblock %}
-
-{% block main_location %}
-        return 301 https://{{ domainConfig.domain }}$request_uri;
 {% endblock %}
